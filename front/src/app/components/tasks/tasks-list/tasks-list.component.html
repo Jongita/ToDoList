@@ -1,0 +1,39 @@
+<div class="card mt-3">
+    <div class="card-header">Įtraukti naują užduotį</div>
+    <div class="card-body">
+        <form id="ngForm">
+            <div class="mb-3">
+                <label for="" class="form-label">Užduotis</label>
+                <input type="text" class="form-control" name="name" value="" ngModel>
+            </div>
+            <button class="btn btn-success " type="submit" form="ngForm">Pridėti</button>
+        </form>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-header">Sąrašas</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nr.</th>
+                    <th>Užduotis</th>
+                    <th>Statusas</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks; let i=index;">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ task.todo }}</td>
+                    <td [ngClass]="{'bg-warning': task.status === 'not-started', 'bg-info': task.status === 'in-progress', 'bg-success': task.status === 'done'}">{{ task.status }}</td>
+                    <td>
+                        <a class="btn btn-outline-secondary">Edit</a>&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-outline-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
