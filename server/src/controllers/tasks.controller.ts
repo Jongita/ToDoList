@@ -26,6 +26,18 @@ export class TaskController {
         res.json(newTask)
     }
 
+     static async update(req:any, res:any){
+        const post=await Task.findOne({'_id':req.params.id});
+        if(post!=null){
+            if(req.body.todo!=null)
+                post.todo=req.body.todo
+            if(req.body.status!=null)
+                post.status=req.body.status
+                post.save();
+            }
+            res.json(post);
+        }
+
     static async delete(req:any, res:any){
         const post=await Task.findOneAndDelete({
             '_id':req.params.id

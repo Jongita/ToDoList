@@ -1,1 +1,23 @@
-<p>update-task works!</p>
+<div class="card mt-3">
+    <div class="card-header">Atnaujinti užduotį</div>
+    <div class="card-body">
+        <form id="ngForm" (ngSubmit)="taskSubmit(f)" #f="ngForm">
+            <div class="mb-3">
+                <label for="" class="form-label">Užduotis</label>
+                <input type="text" class="form-control" name="todo" value="" ngModel [(ngModel)]="todo" required #inputtodo="ngModel">
+                <div *ngIf="!inputtodo.valid && inputtodo.touched">Įrašykite užduotį</div>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Pavardė</label>
+                <select class="form-control" name="status" ngModel [(ngModel)]=" status" #inputstatus="ngModel">
+                    <option disabled selected>Select type</option>
+                    <option value="not-started">not-started</option>
+                    <option value="in-progress">in-progress</option>
+                    <option value="done">done</option>
+                </select>
+                <div *ngIf="!inputstatus.valid && inputstatus.touched">Pasirinkite užduoties statusą</div>
+            </div>
+        </form>
+        <button class="btn btn-success" type="submit" form="ngForm">Atnaujinti</button>
+    </div>
+</div>

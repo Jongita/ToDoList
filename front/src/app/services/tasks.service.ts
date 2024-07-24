@@ -13,7 +13,7 @@ export class TasksService {
     return this.http.get<Task[]>('http://localhost:3000/tasks/');
   }
 
-  public getTask(id:number) {
+  public getTask(id:string) {
     return this.http.get<Task>('http://localhost:3000/tasks/'+id);
   }
 
@@ -21,8 +21,8 @@ export class TasksService {
     return this.http.post('http://localhost:3000/tasks/', task);
   }
 
-  public updateTask(task:Task){
-    return this.http.put('http://localhost:3000/tasks/', task);
+  public updateTask(id:string, task:Task){
+    return this.http.put('http://localhost:3000/tasks/'+id, task);
   }
 
   public deleteTask(id:string){
