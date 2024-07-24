@@ -25,7 +25,7 @@ export class TasksService {
     return this.http.put('http://localhost:3000/tasks/', task);
   }
 
-  public deleteTask(id:number){
+  public deleteTask(id:string){
     return this.http.delete('http://localhost:3000/tasks/'+id);
   }
 }
